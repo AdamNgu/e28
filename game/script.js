@@ -56,7 +56,6 @@ if (outcome === "lose") {
 };
 
 const render = (playerChoice, computerChoice, outcome) => {
-
   if (outcome) {
     document.querySelector(
       ".aar"
