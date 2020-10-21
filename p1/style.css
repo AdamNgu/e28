@@ -1,0 +1,17 @@
+[v-cloak] {
+    display: none
+}
+
+.win {
+    color: green;
+}
+
+.lose {
+    color: red;
+}
+
+
+body{
+    text-align: center;
+    margin-top: 15px;
+}

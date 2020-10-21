@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <link rel='stylesheet' href='style.css'></style>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js' defer></script>
+    <script src="script.js" defer></script>
+    <title>Rock Paper Scissors</title>
+  </head>
+  <body>
+    <div class="main" v-cloak>
+      <div>Can you outsmart a computer?</div>
+      <button class='play' v-on:click="selectChoice">rock</button>
+      <button class='play' v-on:click="selectChoice">paper</button>
+      <button class='play' v-on:click="selectChoice">scissors</button>
+      <div class="aar" v-bind:class="{win: outcome==='win', lose: outcome==='lose'}" v-if="outcome">{{ lastGameResult }}</div>
+      <score-board v-bind:player-wins="playerWins" v-bind:computer-Wins="computerWins"></score-board>
+      <button class='reset' v-on:click="resetGame">Reset game</button>
+    </div>
+  </body>
+</html>
