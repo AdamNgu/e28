@@ -35,11 +35,30 @@ Vue.component("score-board", {
 </div>`,
 });
 
+Vue.component("game-history", {
+  props: ["history"],
+  template: `      <ul>
+    <history-item v-for="game in history" v-bind:game="game"></history-item>
+</ul>`,
+});
+
+Vue.component("history-item", {
+  props: ["game"],
+  template: `     
+  <li v-bind:class="{win: gameResult==='win', lose: gameResult==='lose'}">
+    {{game[0]}} vs. {{game[1]}}
+  </li>`,
+  computed: {
+    gameResult() {
+      return determineMatch(this.game[0], this.game[1]);
+    }
+  }
+});
+
 var app = new Vue({
   el: ".main",
   data: {
-    playerWins: 0,
-    computerWins: 0,
+    history: [],
     playerChoice: null,
     computerChoice: null,
     outcome: "",
@@ -48,29 +67,20 @@ var app = new Vue({
     selectChoice(event) {
       this.playerChoice = event.target.innerHTML;
       this.computerChoice = getRandomChoice();
-      if (this.playerChoice === this.computerChoice) {
-        this.outcome = "tie";
-        return;
-      }
-      if (WINNING_PLAY[`${this.playerChoice} ${this.computerChoice}`]) {
-        this.playerWins++;
-        this.outcome = "win";
-        return;
-      }
-      this.computerWins++;
-      this.outcome = "lose";
+      this.history.push([this.playerChoice, this.computerChoice])
+      this.outcome = determineMatch(this.playerChoice, this.computerChoice)
     },
     resetGame() {
-      this.playerWins = 0;
-      this.computerWins = 0;
       this.playerChoice = null;
       this.computerChoice = null;
       this.outcome = null;
+      this.history = [];
     },
   },
   computed: {
     lastGameResult() {
-      return `${this.playerChoice} vs. ${this.computerChoice}: ${
+      const lastGame = this.history[this.history.length-1]
+      return `${lastGame[0]} vs. ${lastGame[1]}: ${
         OUTCOME_TEXT[this.outcome]
       }`;
     },
