@@ -24,6 +24,15 @@ const determineMatch = (choice1, choice2) => {
   }
   return "lose";
 };
+Vue.component("score-board", {
+  props: ["playerWins", "computerWins"],
+  template: `<div>
+  <div>
+    Player: <span class="player-score">{{playerWins}}</span> 
+    Computer: <span class="computer-score">{{computerWins}}</span>
+  </div>
+</div>`,
+});
 
 Vue.component("game-history", {
   props: ["history"],
@@ -50,17 +59,15 @@ var app = new Vue({
   data: {
     history: [],
     playerChoice: null,
-    computerChoice: null,
   },
   methods: {
     selectChoice(event) {
       this.playerChoice = event.target.innerHTML;
-      this.computerChoice = getRandomChoice();
-      this.history.push([this.playerChoice, this.computerChoice])
+      const computerChoice = getRandomChoice();
+      this.history.push([this.playerChoice, computerChoice])
     },
     resetGame() {
       this.playerChoice = null;
-      this.computerChoice = null;
       this.history = [];
     },
   },
@@ -77,6 +84,16 @@ var app = new Vue({
       return `${this.lastMatch[0]} vs. ${this.lastMatch[1]}: ${
         OUTCOME_TEXT[this.lastGameOutcome]
       }`;
+    },
+    playerWins() {
+      return this.history.reduce((reducer, match) => {
+        return determineMatch(...match) === "win" ? reducer + 1 : reducer
+      }, 0)
+    },
+    computerWins() {
+      return this.history.reduce((reducer, match) => {
+        return determineMatch(...match) === "lose" ? reducer + 1 : reducer
+      }, 0)
     },
   },
 });
