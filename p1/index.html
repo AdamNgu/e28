@@ -12,7 +12,7 @@
       <button class='play' v-on:click="selectChoice">rock</button>
       <button class='play' v-on:click="selectChoice">paper</button>
       <button class='play' v-on:click="selectChoice">scissors</button>
-      <div class="aar" v-bind:class="{win: outcome==='win', lose: outcome==='lose'}" v-if="outcome">{{ lastGameResult }}</div>
+      <div class="aar" v-bind:class="{win: lastGameOutcome==='win', lose: lastGameOutcome==='lose'}" v-if="lastGameOutcome">{{ lastGameDisplay }}</div>
       <div>Game History</div>
       <game-history v-bind:history="history"></game-history>
     </div>
