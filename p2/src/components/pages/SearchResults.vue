@@ -1,6 +1,8 @@
+// TODO: have a specific message that appears when no results found
+// TODO 2: DRY Home.vue and SeachResults.vue, there's a lot of redundant code between both
 <template>
   <div>
-    <h1>Home Page</h1>
+    <h1>Post Search</h1>
     <h2>Posts</h2>
     <ul>
       <router-link
@@ -27,7 +29,13 @@ export default {
   },
   mounted() {
     getPosts().then((posts) => {
-      this.posts = posts;
+      const filteredPosts = posts.filter((post) => {
+        return (
+          post.title.includes(this.$route.params.searchQuery) ||
+          post.body.includes(this.$route.params.searchQuery)
+        );
+      });
+      this.posts = filteredPosts;
     });
   },
 };

@@ -1,6 +1,8 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Home from "@/components/pages/Home.vue";
 import NewPost from "@/components/pages/NewPost.vue";
+import Post from "@/components/pages/Post.vue";
+import SearchResults from "@/components/pages/SearchResults.vue";
 
 const routes = [
   {
@@ -12,6 +14,16 @@ const routes = [
     path: "/new",
     name: "New Entry",
     component: NewPost,
+  },
+  {
+    path: "/posts/:postId",
+    name: "Post",
+    component: Post,
+  },
+  {
+    path: "/search/:searchQuery",
+    name: "SearchResults",
+    component: SearchResults,
   },
 ];
 

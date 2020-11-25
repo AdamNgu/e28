@@ -32,10 +32,13 @@
       "plugin:vue/vue3-essential",
       "eslint:recommended"
     ],
+    "rules": {
+        "no-console": 1,
+        "no-debugger": 1
+    },
     "parserOptions": {
       "parser": "babel-eslint"
-    },
-    "rules": {}
+    }
   },
   "browserslist": [
     "> 1%",
