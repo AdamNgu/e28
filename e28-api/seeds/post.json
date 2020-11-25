@@ -1,0 +1,12 @@
+{
+    "seeds": [
+        {
+            "title": "First post",
+            "body": "I was first"
+        },
+        {
+            "title": "Second post",
+            "body": "I was second"
+        }
+    ]
+}
