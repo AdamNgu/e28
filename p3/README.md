@@ -7,6 +7,7 @@
 + /new, new posts page that allows user to create post
 + /post/:postId, display page with title and description of post
 + /search/:searchQuery, does a simple search to see if post includes searchQuery
++ /account, allows log in or registration
 
 ## SFC summary
 + Home, homepage
@@ -19,9 +20,11 @@
 + Can GET posts from server
 + Can GET posts then search for string
 + Can POST a new post
++ Can POST a new user
++ Can POST a user login
 
 ## Outside resources
 + https://www.vuemastery.com/blog/vue-router-a-tutorial-for-vue-3/ 
 
 ## Notes for instructor
-It's late because I got swamped with work + life, sorry!
+Should probably have managed my time better for this project
