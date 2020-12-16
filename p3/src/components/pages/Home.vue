@@ -1,15 +1,15 @@
 <template>
-  <div>
+  <div data-cy="home">
     <h1>Home Page</h1>
     <h2>Posts</h2>
-    <ul>
+    <ul data-cy="posts">
       <router-link
         v-for="post in posts"
         :key="post.id"
         v-bind:to="'/posts/' + post.id"
         exact
       >
-        {{ post.title }}
+        <div data-cy="post">{{ post.title }}</div>
         <br />
       </router-link>
     </ul>
