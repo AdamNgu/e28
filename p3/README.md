@@ -1,6 +1,6 @@
 # Project 3: Anonymous Blog
 + By: Adam Nguyen
-+ Production URL: <http://e28p3.adamnguyen.loc>
++ Production URL: <http://e28p3.adamnguyen.me>
 
 ## Pages summary
 + Home page
