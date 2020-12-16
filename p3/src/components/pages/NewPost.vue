@@ -15,7 +15,6 @@
 </template>
 
 <script>
-// import {postPost} from '@/api/api';
 import { axios } from "@/app.js";
 
 import router from "@/router";

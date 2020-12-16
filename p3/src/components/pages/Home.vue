@@ -17,23 +17,12 @@
 </template>
 
 <script>
-// import { getPosts } from "@/api/api";
-
 export default {
-  data() {
-    return {
-      // posts: [],
-    };
-  },
+  data() {},
   computed: {
     posts() {
-      return this.$store.state.posts
-    }
-  },
-  mounted() {
-    // getPosts().then((posts) => {
-    //   this.$store.commit('setPosts', posts)
-    // });
+      return this.$store.state.posts;
+    },
   },
 };
 </script>
